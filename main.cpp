@@ -1,25 +1,4 @@
-#include <SFML/Graphics.hpp>
-
-class Text {
-private:
-  sf::Font font;
-  sf::Text text;
-public:
-  Text(sf::String string, sf::Vector2f pos) {
-    font.loadFromFile("asset/monospace.ttf");
-    text.setFont(font);
-    text.setString(string);
-    text.setFillColor(sf::Color::Black);
-    text.setCharacterSize(16);
-    text.setPosition(pos);
-  }
-  sf::Text get() {
-    return text;
-  }
-  void set(sf::String string) {
-    text.setString(string);
-  }
-};
+#include "src/textbox.hpp"
 
 int main() {
   sf::RenderWindow window(sf::VideoMode(820,540),"Blaiteray Antivirus",sf::Style::Titlebar|sf::Style::Close);
