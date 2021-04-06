@@ -14,8 +14,12 @@ namespace sdx {
   class TextBox {
   private:
     Text inpText;
+    sf::RectangleShape outerRect;
+    sf::RectangleShape innerRect;
+    sf::String getPinp;
   public:
     TextBox();
     void draw(sf::RenderWindow &);
+    void handleEvent(sf::Event &);
   };
 }
