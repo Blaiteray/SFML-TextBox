@@ -6,7 +6,7 @@ namespace sdx {
     text.setFont(font);
     text.setString(string);
     text.setFillColor(sf::Color::Black);
-    text.setCharacterSize(16);
+    text.setCharacterSize(18);
     text.setPosition(pos);
   }
   sf::Text Text::get() {
