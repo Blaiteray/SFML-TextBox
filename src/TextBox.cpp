@@ -133,6 +133,11 @@ namespace sdx {
                     
                 }
             }
+            if(event.key.code==sf::Keyboard::Delete) {
+                if(focusChar!=getPinp.getSize()) {
+                    getPinp.erase(focusChar);
+                }
+            }
             if(event.key.code==sf::Keyboard::Enter) {
                 if(getPinp.getSize()>0) txtInp=getPinp;
                     focusChar=0;
