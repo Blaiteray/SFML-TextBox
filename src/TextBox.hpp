@@ -36,6 +36,7 @@ namespace sdx {
             void setSize(unsigned int); //update text size
         };
         TextBox();  //constructor
+        TextBox(float, float, float, float, float); //first two parameter for size, second two for position and the last one for thickness.
         void draw(sf::RenderWindow &);  //it'll go to the main event loop, after event handler, it draws in the window.
         void handleEvent(sf::Event &); //handles text input and press enter evernt. place it inside pollEvent loop inside the main event loop.
         sf::String getCurrentText();  //get what is written in the text box right now

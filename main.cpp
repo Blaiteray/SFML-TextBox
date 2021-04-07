@@ -13,10 +13,7 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(820,540),"Blaiteray Antivirus",sf::Style::Titlebar|sf::Style::Close);
     sdx::TextBox::Text text("",134,260);
     text.setSize(20);
-    sdx::TextBox textBox;
-    textBox.setSize(560,32);
-    textBox.setPosition(130,200);
-    textBox.setBorder(2);
+    sdx::TextBox textBox(560,32,130,200,2);
 
     while(window.isOpen()) {
         sf::Event event;
