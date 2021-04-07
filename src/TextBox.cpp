@@ -6,7 +6,7 @@
 #include "./textbox.hpp"
 
 namespace sdx {
-    Text::Text(sf::String string, float x, float y) {
+    TextBox::Text::Text(sf::String string, float x, float y) {
     font.loadFromFile("asset/monospace.ttf");
     text.setFont(font);
     text.setString(string);
@@ -14,22 +14,22 @@ namespace sdx {
     text.setCharacterSize(18);
     text.setPosition(sf::Vector2f(x,y));
   }
-  sf::Text Text::get() {
+  sf::Text TextBox::Text::get() {
     return text;
   }
-  void Text::setText(sf::String string) {
+  void TextBox::Text::setText(sf::String string) {
     text.setString(string);
   }
 
-  void Text::setPosition(float x, float y) {
+  void TextBox::Text::setPosition(float x, float y) {
     text.setPosition(sf::Vector2f(x,y));
   }
   
-  void Text::setSize(unsigned int x) {
+  void TextBox::Text::setSize(unsigned int x) {
     text.setCharacterSize(x);
   }
 
-  //*********Here starts textbox class***************//
+  //Main TextBox methods start here
   TextBox::TextBox() : inpText("", 6, 5) {
     outerRect.setSize(sf::Vector2f(460,32));
     innerRect.setSize(sf::Vector2f(456,28));
@@ -37,6 +37,12 @@ namespace sdx {
     innerRect.setPosition(sf::Vector2f(2,2));
     outerRect.setFillColor(sf::Color::Black);
     innerRect.setFillColor(sf::Color::White);
+    
+    blinker.setSize(sf::Vector2f(1.5,26));
+    blinker.setPosition(sf::Vector2f(4,3));
+    blinker.setFillColor(sf::Color::Black);
+
+    time=sf::Time::Zero;
     textSize=18;
     getPinp="";
     txtInp="";
@@ -54,6 +60,7 @@ namespace sdx {
     textSize=(unsigned int)(y-4-2*thickness);
     outerRect.setSize(sf::Vector2f(x,y));
     innerRect.setSize(sf::Vector2f(x-2*thickness,y-2*thickness));
+    blinker.setSize(sf::Vector2f(1.5,y-2*thickness-2));
     inpText.setSize(textSize);
     inpText.setPosition(posX+thickness+2,posY+thickness-1);
   }
@@ -63,6 +70,7 @@ namespace sdx {
     posY=y;
     outerRect.setPosition(sf::Vector2f(x,y));
     innerRect.setPosition(sf::Vector2f(x+thickness,y+thickness));
+    blinker.setPosition(sf::Vector2f(x+thickness+2,y+thickness+1));
     inpText.setPosition(x+thickness+2,y+thickness-1);
   }
 
@@ -84,21 +92,30 @@ namespace sdx {
 
   void TextBox::handleEvent(sf::Event & event)  {
     if(event.type==sf::Event::TextEntered) {
-      if(event.text.unicode=='\b') getPinp=getPinp.substring(0,getPinp.getSize()-1);
-      else if(getPinp.getSize()<=(unsigned int)(5*width/(3*textSize))) getPinp+=event.text.unicode;
+      if(event.text.unicode=='\b') {getPinp=getPinp.substring(0,getPinp.getSize()-1);
+        if(getPinp.getSize()==0) blinker.setPosition(posX+thickness+2,posY+thickness+1);
+        else blinker.setPosition(sf::Vector2f(inpText.get().findCharacterPos(getPinp.getSize()-1).x+(textSize*0.4+2), posY+thickness+1));}
+      else if(inpText.get().findCharacterPos(getPinp.getSize()-1).x<width &&31<int(event.text.unicode) && 256>int(event.text.unicode)) {getPinp+=event.text.unicode;
+        blinker.setPosition(sf::Vector2f(inpText.get().findCharacterPos(getPinp.getSize()-1).x+(textSize*0.4+2), posY+thickness+1));}
     }
     if(event.type==sf::Event::KeyPressed) {
       if(event.key.code==sf::Keyboard::Enter) {
-        txtInp=getPinp;
+        if(getPinp.getSize()>0) txtInp=getPinp;
+        blinker.setPosition(posX+thickness+2,posY+thickness+1);
         getPinp.clear();
       }
     }
   }
 
   void TextBox::draw(sf::RenderWindow & window) {
+    time+=clock.restart();
+    if(time.asSeconds()>1) {time=sf::Time::Zero;
+      blinker.setFillColor(sf::Color::Black);}
+    else if(time.asSeconds()>0.5) blinker.setFillColor(sf::Color::White);
     inpText.setText(getPinp);
     window.draw(outerRect);
     window.draw(innerRect);
+    window.draw(blinker);
     window.draw(inpText.get());
   }
 }
