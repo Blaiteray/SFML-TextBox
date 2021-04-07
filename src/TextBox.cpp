@@ -95,7 +95,8 @@ namespace sdx {
       if(event.text.unicode=='\b') {getPinp=getPinp.substring(0,getPinp.getSize()-1);
         if(getPinp.getSize()==0) blinker.setPosition(posX+thickness+2,posY+thickness+1);
         else blinker.setPosition(sf::Vector2f(inpText.get().findCharacterPos(getPinp.getSize()-1).x+(textSize*0.4+2), posY+thickness+1));}
-      else if(inpText.get().findCharacterPos(getPinp.getSize()-1).x<width &&31<int(event.text.unicode) && 256>int(event.text.unicode)) {getPinp+=event.text.unicode;
+      else if((inpText.get().findCharacterPos(getPinp.getSize()-1).x+1.2*textSize)<(width+posX) &&31<int(event.text.unicode) && 256>int(event.text.unicode)) {
+        getPinp+=event.text.unicode;
         blinker.setPosition(sf::Vector2f(inpText.get().findCharacterPos(getPinp.getSize()-1).x+(textSize*0.4+2), posY+thickness+1));}
     }
     if(event.type==sf::Event::KeyPressed) {
