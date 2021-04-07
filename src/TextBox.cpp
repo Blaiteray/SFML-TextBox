@@ -53,7 +53,7 @@ namespace sdx {
         width=460;
         focusChar=0;
     }
-    TextBox::TextBox(float x1, float x2, float y1=0, float y2=0, float z=2) : inpText("", y1+z+2, y2+z-1) {
+    TextBox::TextBox(float x1, float x2, float y1, float y2, float z) : inpText("", y1+z+2, y2+z-1) {
         outerRect.setSize(sf::Vector2f(x1,x2));
         innerRect.setSize(sf::Vector2f(x1-2*z,x2-2*z));
         outerRect.setPosition(sf::Vector2f(y1,y2));
