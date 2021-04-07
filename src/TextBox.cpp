@@ -14,20 +14,14 @@ namespace sdx {
         text.setCharacterSize(18);
         text.setPosition(sf::Vector2f(x,y));
     }
-    sf::Text TextBox::Text::get() {
-        return text;
-    }
-    void TextBox::Text::setText(sf::String string) {
-        text.setString(string);
-    }
 
-    void TextBox::Text::setPosition(float x, float y) {
-        text.setPosition(sf::Vector2f(x,y));
-    }
+    sf::Text TextBox::Text::get() { return text; }
+
+    void TextBox::Text::setText(sf::String string) { text.setString(string); }
+
+    void TextBox::Text::setPosition(float x, float y) { text.setPosition(sf::Vector2f(x,y)); }
   
-    void TextBox::Text::setSize(unsigned int x) {
-        text.setCharacterSize(x);
-    }
+    void TextBox::Text::setSize(unsigned int x) { text.setCharacterSize(x); }
 
     //Main TextBox methods start here
     TextBox::TextBox() : inpText("", 6, 5) {
@@ -107,13 +101,9 @@ namespace sdx {
         setPosition(posX,posY);
     }
 
-    sf::String TextBox::getCurrentText() {
-        return getPinp;
-    }
+    sf::String TextBox::getCurrentText() { return getPinp; }
 
-    sf::String TextBox::getInput() {
-        return txtInp;
-    }
+    sf::String TextBox::getInput() { return txtInp; }
 
     void TextBox::handleEvent(sf::Event & event)  {
         if(event.type==sf::Event::TextEntered) {
@@ -130,7 +120,6 @@ namespace sdx {
                 if(focusChar!=0){
                     getPinp.erase(focusChar-1,1);
                     if(focusChar>0) focusChar--;
-                    
                 }
             }
             if(event.key.code==sf::Keyboard::Delete) {
