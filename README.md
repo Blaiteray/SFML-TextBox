@@ -2,7 +2,7 @@
 
 A utility [SFML](https://www.sfml-dev.org/) class in order to create a complete textbox, and get input from it.
 
-# TextBox properties
+## Properties
 
 - [x] Has black border, white background, black font color.
 - [x] Font type - monospace. Size sets automatically depending on box height.
@@ -13,7 +13,7 @@ A utility [SFML](https://www.sfml-dev.org/) class in order to create a complete 
 
 <img src="https://github.com/Blaiteray/SFML-TextBox/blob/master/example.png" width="80%" height="80%"/>
 
-# How to use
+## How to use
 
 ### Prerequisites
 
@@ -25,7 +25,7 @@ A utility [SFML](https://www.sfml-dev.org/) class in order to create a complete 
 
 You'll need only two files from the `include` directory of this repo. Include `textbox.hpp` in your main C++ source and compile it with `textbox.cpp`.
 
-# `sdx::TextBox` class Reference
+## `sdx::TextBox` class Reference
 
 | Return type | Name and parameter | Description |
 | --- | --- | --- |
