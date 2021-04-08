@@ -26,3 +26,5 @@ And also you have to download `SFML-TextBox.rar` from [here](https://github.com/
 ### Compilation
 
 You'll need only three files from the `include` directory of the release. Include `textbox.hpp` in your main C++ source and compile it with `textbox.cpp`. If you replace `monospace.ttf` with some other font, everthing might break.
+
+Class reference : https://github.com/Blaiteray/SFML-TextBox/wiki
