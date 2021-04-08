@@ -15,6 +15,8 @@ A utility [SFML](https://www.sfml-dev.org/) class in which creates a complete te
 
 ## How to use
 
+Class reference : https://github.com/Blaiteray/SFML-TextBox/wiki
+
 ### Prerequisites
 
 - You have to have [SFML](https://www.sfml-dev.org/download.php) downloaded in your PC.
@@ -27,4 +29,3 @@ And also you have to download `SFML-TextBox.rar` from [here](https://github.com/
 
 You'll need only three files from the `include` directory of the release. Include `textbox.hpp` in your main C++ source and compile it with `textbox.cpp`. If you replace `monospace.ttf` with some other font, everthing might break.
 
-Class reference : https://github.com/Blaiteray/SFML-TextBox/wiki
