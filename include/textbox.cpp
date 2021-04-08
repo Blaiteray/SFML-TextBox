@@ -34,7 +34,7 @@ namespace sdx {
         outerRect.setFillColor(sf::Color::Black);
         innerRect.setFillColor(sf::Color::White);
     
-        blinker.setSize(sf::Vector2f(1.5,26));
+        blinker.setSize(sf::Vector2f(1,26));
         blinker.setPosition(sf::Vector2f(4,3));
         blinker.setFillColor(sf::Color::Black);
 
@@ -59,7 +59,7 @@ namespace sdx {
         outerRect.setFillColor(sf::Color::Black);
         innerRect.setFillColor(sf::Color::White);
     
-        blinker.setSize(sf::Vector2f(1.5,x2-2*z-2));
+        blinker.setSize(sf::Vector2f(1,x2-2*z-2));
         blinker.setPosition(sf::Vector2f(y1+z+2,y2+z+1));
         blinker.setFillColor(sf::Color::Black);
 
@@ -85,7 +85,7 @@ namespace sdx {
         textSize=(unsigned int)(y-4-2*thickness);
         outerRect.setSize(sf::Vector2f(x,y));
         innerRect.setSize(sf::Vector2f(x-2*thickness,y-2*thickness));
-        blinker.setSize(sf::Vector2f(1.5,y-2*thickness-2));
+        blinker.setSize(sf::Vector2f(1,y-2*thickness-2));
         inpText.setSize(textSize);
         inpText.setPosition(posX+thickness+2,posY+thickness-1);
     }

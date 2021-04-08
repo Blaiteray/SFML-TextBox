@@ -6,7 +6,7 @@
  * 
  * ****************************************/
 
-#include "src/textbox.hpp"
+#include "include/textbox.hpp"
 
 
 int main() {
