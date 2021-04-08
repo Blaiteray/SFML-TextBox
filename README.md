@@ -21,7 +21,7 @@ A utility [SFML](https://www.sfml-dev.org/) class in which creates a complete te
 - Any C++ compiler and
 - Decent knowledge about using external header files in C++.
 
-And also you have to download the necessary files of this repo. from [here](https://github.com/Blaiteray/SFML-TextBox/releases).
+And also you have to download `SFML-TextBox.rar` from [here](https://github.com/Blaiteray/SFML-TextBox/releases).
 
 ### Compilation
 
