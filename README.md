@@ -1,6 +1,6 @@
 # SFML-TextBox
 
-A utility [SFML](https://www.sfml-dev.org/) class in order to create a complete textbox, and get input from it.
+A utility [SFML](https://www.sfml-dev.org/) class in which creates a complete textbox, and get input from it.
 
 ## Properties
 
