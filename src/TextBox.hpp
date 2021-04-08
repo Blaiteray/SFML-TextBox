@@ -4,6 +4,8 @@
 **************************************/
 
 #include<SFML/Graphics.hpp>
+#ifndef SDX_TEXTBOX
+#define SDX_TEXTBOX
 
 namespace sdx {
     class TextBox {
@@ -51,3 +53,4 @@ namespace sdx {
         Text inpText;
     };
 }
+#endif
