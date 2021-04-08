@@ -21,9 +21,11 @@ A utility [SFML](https://www.sfml-dev.org/) class in which creates a complete te
 - Any C++ compiler and
 - Decent knowledge about using external header files in C++.
 
+And also you have to download the necessary files from [here](https://github.com/Blaiteray/SFML-TextBox/releases)
+
 ### Compilation
 
-You'll need only two files from the `include` directory of this repo. Include `textbox.hpp` in your main C++ source and compile it with `textbox.cpp`.
+You'll need only three files from the `include` directory of the release. Include `textbox.hpp` in your main C++ source and compile it with `textbox.cpp`. If you replace `monospace.ttf` with some other font, everthing might break.
 
 ## `sdx::TextBox` class Reference
 
