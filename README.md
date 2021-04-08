@@ -35,7 +35,7 @@ You'll need only two files from the `include` directory of this repo. Include `t
 |**void**| `handleEvent(sf::Event & event)` | Takes the instance `sf::Event` class inside the main event loop. Place this function inside `window.pollEvent(event)` loop in order to handle events related to this textbox. |
 | `sf::String` | `getCurrentText()` | Returns the `text` inside the textbox. |
 | `sf::String` | `getInput` | Returns the inserted `text` after pressing `Enter`. |
-|**void**| `setSize(float width, float height)` | Sets textbox size. |
-|**void**| `setPosition(float positionX, float positionY)` | Sets position of upper-left corner of the textbox. |
-|**void**| `setBorder(float thickness)` | Sets border thickness. |
+|**void**| `setSize(float width, float height)` | Updates textbox size. |
+|**void**| `setPosition(float positionX, float positionY)` | Updates position of upper-left corner of the textbox. |
+|**void**| `setBorder(float thickness)` | Updates border thickness. |
 
