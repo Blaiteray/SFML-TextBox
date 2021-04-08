@@ -15,7 +15,7 @@ A utility [SFML](https://www.sfml-dev.org/) class in which creates a complete te
 
 ## How to use
 
-Class reference : https://github.com/Blaiteray/SFML-TextBox/wiki
+Class documentation : https://github.com/Blaiteray/SFML-TextBox/wiki
 
 ### Prerequisites
 
