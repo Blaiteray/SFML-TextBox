@@ -25,7 +25,7 @@ A utility [SFML](https://www.sfml-dev.org/) class in order to create a complete 
 
 You'll need only two files from the `include` directory of this repo. Include `textbox.hpp` in your main C++ source and compile it with `textbox.cpp`.
 
-# sdx::TextBox class Reference
+# `sdx::TextBox` class Reference
 
 | Return type | Name and parameter | Description |
 | --- | --- | --- |
