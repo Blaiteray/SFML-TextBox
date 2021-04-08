@@ -18,6 +18,7 @@ namespace sdx {
         //sf::Cursor cursor;
         unsigned int textSize;
         unsigned int focusChar;
+        float charWidth;
         float thickness;
         float posX;
         float posY;

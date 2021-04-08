@@ -13,6 +13,8 @@ namespace sdx {
         text.setFillColor(sf::Color::Black);
         text.setCharacterSize(18);
         text.setPosition(sf::Vector2f(x,y));
+        text.setLineSpacing(0);
+        text.setOutlineThickness(0);
     }
 
     sf::Text TextBox::Text::get() { return text; }
@@ -47,6 +49,7 @@ namespace sdx {
         width=460;
         focusChar=0;
         focus=false;
+        charWidth=0;
     }
     TextBox::TextBox(float x1, float x2, float y1, float y2, float z) : inpText("", y1+z+2, y2+z-1) {
         outerRect.setSize(sf::Vector2f(x1,x2));
@@ -71,6 +74,7 @@ namespace sdx {
         width=x1;
         focusChar=0;
         focus=false;
+        charWidth=0;
 
         inpText.setSize(textSize);
     }
@@ -143,7 +147,13 @@ namespace sdx {
         }
         if(event.type==sf::Event::MouseButtonPressed) {
             if(event.mouseButton.button==sf::Mouse::Left) {
-                if(event.mouseButton.x>posX && event.mouseButton.x <posX+width && event.mouseButton.y>posY && event.mouseButton.y<posY+height) focus = true;
+                if(getPinp.getSize()>0) {
+                    if(charWidth==0) charWidth=inpText.get().findCharacterPos(1).x-inpText.get().findCharacterPos(0).x;
+                    unsigned int temp = (unsigned int)((event.mouseButton.x-posX)/charWidth);
+                    if(temp>getPinp.getSize()) focusChar=getPinp.getSize();
+                    else focusChar=temp;
+                }
+                if(event.mouseButton.x >posX && event.mouseButton.x <posX+width && event.mouseButton.y>posY && event.mouseButton.y<posY+height) focus = true;
                 else focus = false;
             }
         }
@@ -158,7 +168,7 @@ namespace sdx {
             else if(time.asSeconds()>0.5) blinker.setFillColor(sf::Color::White);
         }
         else {
-            blinker.setFillColor(sf::Color::Black);
+            blinker.setFillColor(sf::Color::White);
             if(time.asSeconds()>300) time=sf::Time::Zero;
         }
         if(focusChar==0) blinker.setPosition(posX+thickness+2,posY+thickness+1);
