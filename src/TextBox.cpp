@@ -46,6 +46,7 @@ namespace sdx {
         height=32;
         width=460;
         focusChar=0;
+        focus=false;
     }
     TextBox::TextBox(float x1, float x2, float y1, float y2, float z) : inpText("", y1+z+2, y2+z-1) {
         outerRect.setSize(sf::Vector2f(x1,x2));
@@ -69,6 +70,7 @@ namespace sdx {
         height=x2;
         width=x1;
         focusChar=0;
+        focus=false;
 
         inpText.setSize(textSize);
     }
@@ -106,7 +108,7 @@ namespace sdx {
     sf::String TextBox::getInput() { return txtInp; }
 
     void TextBox::handleEvent(sf::Event & event)  {
-        if(event.type==sf::Event::TextEntered) {
+        if(event.type==sf::Event::TextEntered && focus) {
             if((inpText.get().findCharacterPos(focusChar).x+1.2*textSize)<(width+posX) &&31<int(event.text.unicode) && 256>int(event.text.unicode)) {
                 if(focusChar==getPinp.getSize()) getPinp+=event.text.unicode;
                 else {
@@ -115,7 +117,7 @@ namespace sdx {
                 focusChar++;
             }
         }
-        if(event.type==sf::Event::KeyPressed) {
+        if(event.type==sf::Event::KeyPressed && focus) {
             if(event.key.code==sf::Keyboard::BackSpace) {
                 if(focusChar!=0){
                     getPinp.erase(focusChar-1,1);
@@ -139,14 +141,26 @@ namespace sdx {
                 if(focusChar<getPinp.getSize()) focusChar++;
             }
         }
+        if(event.type==sf::Event::MouseButtonPressed) {
+            if(event.mouseButton.button==sf::Mouse::Left) {
+                if(event.mouseButton.x>posX && event.mouseButton.x <posX+width && event.mouseButton.y>posY && event.mouseButton.y<posY+height) focus = true;
+                else focus = false;
+            }
+        }
     }
 
     void TextBox::draw(sf::RenderWindow & window) {
         time+=clock.restart();
-        if(time.asSeconds()>1) {time=sf::Time::Zero;
-            blinker.setFillColor(sf::Color::Black);
+        if(focus){
+            if(time.asSeconds()>1) {time=sf::Time::Zero;
+                blinker.setFillColor(sf::Color::Black);
+            }
+            else if(time.asSeconds()>0.5) blinker.setFillColor(sf::Color::White);
         }
-        else if(time.asSeconds()>0.5) blinker.setFillColor(sf::Color::White);
+        else {
+            blinker.setFillColor(sf::Color::Black);
+            if(time.asSeconds()>300) time=sf::Time::Zero;
+        }
         if(focusChar==0) blinker.setPosition(posX+thickness+2,posY+thickness+1);
         else blinker.setPosition(sf::Vector2f(inpText.get().findCharacterPos(focusChar).x, posY+thickness+1));
         inpText.setText(getPinp);

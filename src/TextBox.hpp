@@ -23,6 +23,7 @@ namespace sdx {
         float posY;
         float height;
         float width;
+        bool focus;
     public:
         class Text {
         private:
